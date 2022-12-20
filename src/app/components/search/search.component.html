@@ -1,0 +1,64 @@
+<div class="container mt-3 text-center bg-secondary">
+    <form class="row row-cols-lg-auto g-3 align-items-center" (ngSubmit)="submitForm()">
+    <div class="col-12">
+      <label class="visually-hidden" for="inlineFormInputGroupUsername">Plan</label>
+      <div class="input-group">
+        <select class="form-select" id="inlineFormSelectPref" name="plan_id" [(ngModel)]="plan_id">
+          <option value="">Select Plan</option>
+            <option *ngFor="let plan of plans" value="{{plan.planId}}">{{plan.planName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12">
+      <label class="visually-hidden" for="inlineFormSelectPref">Status</label>
+      <select class="form-select" id="inlineFormSelectPref" name="status_id" [(ngModel)]="status_id">
+        <option value="">Select Status</option>
+          <option *ngFor="let status of statuses" value="{{status.statusId}}">{{status.statusName}}</option>
+      </select>
+    </div>
+  
+    <div class="col-12">
+      <div class="form-check">
+        <label class="visually-hidden" for="inlineFormSelectPref">Start Date</label>
+        <input type="date" class="form-control" id="inlineFormInputGroupUsername" placeholder="Start Date">
+      </div>
+    </div>
+
+    <div class="col-12">
+        <div class="form-check">
+          <label class="visually-hidden" for="inlineFormSelectPref">End Date</label>
+          <input type="date" class="form-control" id="inlineFormInputGroupUsername" placeholder="End Date">
+        </div>
+    </div>
+  
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    </form>
+</div>
+
+<div class="container mt-3">
+  <h2>Customers Report</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>S. No.</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile Number</th>
+        <th>Gender</th>
+        <th>SSN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <td>{{customer.customerId}}</td>
+        <td>{{customer.customerName}}</td>
+        <td>{{customer.customerEmail}}</td>
+        <td>{{customer.customerPhone}}</td>
+        <td>{{customer.customerGender}}</td>
+        <td>{{customer.customerSSN}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
