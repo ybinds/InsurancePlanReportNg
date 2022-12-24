@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Customer } from './entities/customer';
@@ -25,5 +25,13 @@ export class CustomerService {
 
   getAllCustomers(searchObj:SearchObj):Observable<Customer[]>{
     return this._http.post<Customer[]>(`${this.baseUrl}/report/search`, searchObj, {responseType: 'json'});
+  }
+
+  downloadAsExcel(searchObj:SearchObj):Observable<any>{
+    return this._http.post(`${this.baseUrl}/report/excel`, searchObj, {observe:'response', responseType: 'blob' as 'json'});
+  }
+
+  downloadAsPdf(searchObj:SearchObj):any{
+    return this._http.post(`${this.baseUrl}/report/pdf`, searchObj, {observe: 'response', responseType: 'blob' as 'json'});
   }
 }
